@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b57d0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DGT Móstoles" />
+  <title>DGT Móstoles · Entrenador GPS</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="preconnect" href="https://tile.openstreetmap.org" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">ENTRENADOR DE CIRCULACIÓN</div>
+      <h1>DGT Móstoles GPS</h1>
+    </div>
+    <button id="installBtn" class="ghost hidden" aria-label="Instalar app">Instalar</button>
+  </header>
+
+  <main>
+    <section class="status-card" id="gpsCard">
+      <div class="status-row">
+        <span class="dot" id="gpsDot"></span>
+        <div>
+          <strong id="gpsStatus">GPS sin activar</strong>
+          <div class="muted" id="gpsDetail">Pulsa “Usar mi ubicación”.</div>
+        </div>
+      </div>
+      <button id="locateBtn" class="primary">Usar mi ubicación</button>
+    </section>
+
+    <section class="map-wrap">
+      <div id="map" aria-label="Mapa de circulación"></div>
+      <div class="map-actions">
+        <button id="followBtn" class="map-pill" disabled>Seguir GPS</button>
+        <button id="centerDgtBtn" class="map-pill">Centro DGT</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <h2>Ruta de práctica</h2>
+        <span class="badge">NO OFICIAL</span>
+      </div>
+      <p class="muted">Genera una ruta para practicar. El examen real puede seguir cualquier itinerario permitido.</p>
+      <div class="segmented" role="group" aria-label="Duración aproximada">
+        <button data-min="15">15 min</button>
+        <button data-min="25" class="selected">25 min</button>
+        <button data-min="35">35 min</button>
+      </div>
+      <div class="button-grid">
+        <button id="routeFromDgtBtn" class="secondary">Salir desde DGT</button>
+        <button id="routeFromMeBtn" class="secondary" disabled>Salir desde mí</button>
+      </div>
+      <button id="clearRouteBtn" class="text-btn hidden">Borrar ruta</button>
+    </section>
+
+    <section class="panel" id="navigationPanel">
+      <div class="panel-title">
+        <h2>Modo examinador</h2>
+        <span class="badge blue">VOZ</span>
+      </div>
+      <p class="muted">Lee instrucciones breves en voz alta. No da pistas sobre cómo resolverlas.</p>
+      <div class="button-grid">
+        <button id="examBtn" class="secondary" disabled>Iniciar examinador</button>
+        <button id="stopExamBtn" class="danger hidden">Detener</button>
+      </div>
+      <div id="examInstruction" class="instruction hidden"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Información útil</h2>
+      <details>
+        <summary>Centro de Exámenes DGT Móstoles</summary>
+        <p>Autovía A-5, km 16,500, salida 14. Punto de referencia usado por la app.</p>
+      </details>
+      <details>
+        <summary>Zonas de prácticas restringidas</summary>
+        <p><strong>Tipo A:</strong> hay zonas donde las prácticas de autoescuela están prohibidas. <strong>Tipo B:</strong> hay restricciones en horas de circulación intensiva. La app las recuerda, pero no sustituye señalización ni indicaciones de profesor, policía o DGT.</p>
+      </details>
+      <details>
+        <summary>Privacidad de ubicación</summary>
+        <p>La posición GPS se obtiene con permiso del móvil. Para calcular rutas, las coordenadas del recorrido se envían al servicio público de rutas OSRM; el mapa usa teselas de OpenStreetMap. La app no incorpora cuenta ni servidor propio.</p>
+      </details>
+    </section>
+
+    <section class="warning">
+      <strong>Seguridad:</strong> no manipules el móvil mientras conduces. Configura la ruta antes de arrancar o deja que lo maneje el profesor/acompañante.
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navegación principal">
+    <button data-target="gpsCard">GPS</button>
+    <button data-target="map">Mapa</button>
+    <button data-target="navigationPanel">Examinador</button>
+  </nav>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>

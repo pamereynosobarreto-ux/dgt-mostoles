@@ -1,0 +1,58 @@
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --ink: #13233a;
+  --muted: #607086;
+  --blue: #0b57d0;
+  --blue2: #0a66e8;
+  --line: #dce5f2;
+  --ok: #1b8f4d;
+  --warn: #a46100;
+  --danger: #b42318;
+  --shadow: 0 8px 24px rgba(20, 43, 78, .10);
+}
+* { box-sizing: border-box; }
+html, body { margin:0; min-height:100%; background:var(--bg); color:var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+body { padding-bottom: 78px; }
+button { font: inherit; }
+.topbar { position:sticky; top:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; gap:16px; padding: calc(14px + env(safe-area-inset-top)) 16px 12px; background:rgba(244,247,251,.94); backdrop-filter: blur(12px); border-bottom:1px solid rgba(220,229,242,.85); }
+.eyebrow { font-size:10px; letter-spacing:.16em; font-weight:800; color:var(--blue); }
+h1 { margin:2px 0 0; font-size:22px; line-height:1.1; }
+h2 { margin:0; font-size:18px; }
+main { width:min(760px,100%); margin:0 auto; padding:14px; display:grid; gap:14px; }
+.status-card,.panel,.warning { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:var(--shadow); }
+.status-card { display:flex; align-items:center; justify-content:space-between; gap:14px; }
+.status-row { display:flex; align-items:center; gap:11px; min-width:0; }
+.dot { width:12px; height:12px; border-radius:50%; background:#b5bfcb; box-shadow:0 0 0 5px rgba(181,191,203,.16); flex:none; }
+.dot.ok { background:var(--ok); box-shadow:0 0 0 5px rgba(27,143,77,.15); }
+.muted { color:var(--muted); font-size:13px; line-height:1.45; }
+.primary,.secondary,.danger,.ghost,.map-pill { border:0; border-radius:13px; padding:12px 14px; font-weight:800; cursor:pointer; }
+.primary { background:var(--blue); color:white; }
+.secondary { background:#eaf2ff; color:#0b4ba8; border:1px solid #cfe0ff; }
+.danger { background:#feeceb; color:var(--danger); border:1px solid #f7cbc7; }
+.ghost { background:transparent; color:var(--blue); border:1px solid #c9d9f0; }
+button:disabled { opacity:.45; cursor:not-allowed; }
+.map-wrap { position:relative; border-radius:20px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); background:#dce7f6; }
+#map { width:100%; height:48vh; min-height:360px; max-height:560px; }
+.map-actions { position:absolute; z-index:500; left:12px; right:12px; bottom:12px; display:flex; justify-content:space-between; gap:8px; pointer-events:none; }
+.map-pill { pointer-events:auto; background:rgba(255,255,255,.94); color:var(--ink); box-shadow:0 4px 18px rgba(15,35,60,.18); padding:10px 12px; }
+.panel { display:grid; gap:12px; }
+.panel-title { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.badge { font-size:10px; font-weight:900; letter-spacing:.08em; color:#8a5400; background:#fff1cf; border:1px solid #f4d586; padding:5px 8px; border-radius:999px; }
+.badge.blue { color:#0b4ba8; background:#eaf2ff; border-color:#cfe0ff; }
+.segmented { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; background:#eef3f9; padding:5px; border-radius:14px; }
+.segmented button { border:0; background:transparent; padding:10px; border-radius:10px; font-weight:800; color:var(--muted); }
+.segmented button.selected { background:white; color:var(--blue); box-shadow:0 2px 8px rgba(23,46,78,.10); }
+.button-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.text-btn { border:0; background:transparent; color:var(--blue); padding:4px; font-weight:800; }
+.instruction { padding:15px; border-radius:14px; background:#10213b; color:#fff; font-weight:800; line-height:1.4; }
+details { border-top:1px solid var(--line); padding-top:10px; }
+details:first-of-type { border-top:0; padding-top:0; }
+summary { font-weight:800; cursor:pointer; }
+details p { color:var(--muted); line-height:1.5; font-size:14px; }
+.warning { background:#fff8e8; border-color:#f3d69a; color:#744700; font-size:14px; line-height:1.45; box-shadow:none; }
+.bottom-nav { position:fixed; left:0; right:0; bottom:0; z-index:1200; padding:8px 12px calc(8px + env(safe-area-inset-bottom)); display:grid; grid-template-columns:repeat(3,1fr); gap:8px; background:rgba(255,255,255,.96); backdrop-filter: blur(12px); border-top:1px solid var(--line); }
+.bottom-nav button { border:0; background:#eff4fa; color:#44556d; border-radius:12px; padding:10px; font-weight:800; }
+.hidden { display:none !important; }
+.leaflet-control-attribution { font-size:9px; }
+@media (min-width:760px) { body { padding-bottom:20px; } .bottom-nav{ display:none; } main{padding:20px;} }
